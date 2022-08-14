@@ -28,7 +28,7 @@ export default () => {
         const pixiApp = new PIXI.Application({
             width: window.innerWidth,
             height: window.innerHeight,
-            backgroundColor: 0xFFFFFF,
+            backgroundColor: 0x000000,
             antialias: true
         })
 
