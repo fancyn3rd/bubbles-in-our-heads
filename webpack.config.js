@@ -5,7 +5,7 @@ const path = require("path")
 const Dotenv = require('dotenv-webpack');
 
 module.exports = (env) => ({
-  devtool: env.development ? "eval-map" : "none",
+  devtool: env.development ? "eval-cheap-source-map" : "none",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "./bundle.js"
