@@ -3,7 +3,7 @@ import styled from "styled-components"
 import bubblePattern from "../../assets/bubbles.png"
 
 const INTERACTION_TIMEOUT = 10
-const MAX_FILE_SIZE_IN_BYTES = 2000000
+const MAX_FILE_SIZE_IN_BYTES = 5000000
 
 const Background = styled.div`
   position: absolute;
