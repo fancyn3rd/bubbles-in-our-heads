@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
+import bubblePattern from "../../assets/bubbles.png"
 
 const INTERACTION_TIMEOUT = 10
 const MAX_FILE_SIZE_IN_BYTES = 2000000
@@ -12,53 +13,54 @@ const Background = styled.div`
 `
 const ContentContainer = styled.div`
   position: absolute;
-  margin-left: 5vw;
+  margin-top: 20px;
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
 `
-
-
-
 const Title = styled.div`
-  margin-top: 5vh;
-  font-size: 5vh;
+  font-size: 45px;
   font-family: Arial;
 `
 
-const SearchInputField = styled.input`
-  width: 30vh;
-  height: 4vh;
-  font-size: 3vh;
-  border-radius: 2vh;
+const IntroText = styled.div`
+  font-size: 22px;
+  font-family: Arial;
 `
 
-const SearchInputButton = styled.button`
-  margin-top: 2vh;
-  width: 20vh;
-  height: 5vh;
-  font-size: 2.5vh;
-  border-radius: 2vh;
-`
-const Button = styled.button`
-  margin-top: 2vh;
-  width: 20vh;
-  height: 5vh;
-  font-size: 2.5vh;
-  border-radius: 2vh;
-`
-const Description = styled.div`
-  margin-top: 10vh;
-  margin-bottom: 0.2vh;
-  font-size: 3vh;
+const OptionHeadline = styled.div`
+  margin-top: 50px;
+  margin-bottom: 2px;
+  font-size: 20px;
   font-family: Arial;
   font-weight: 600;
 `
 
-const Subtext = styled.div`
-  margin-bottom: 1vh;
-  font-size: 1.9vh;
+const Infotext = styled.div`
+  font-size: 16px;
   font-family: Arial;
 `
+
+const InputField = styled.input`
+  width: 190px;
+  height: 30px;
+  font-size: 20px;
+  border-radius: 15px;
+`
+
+const Button = styled.button`
+  margin-top: 5px;
+  width: 200px;
+  height: 35px;
+  font-size: 20px;
+  border-radius: 15px;
+`
+
+const InputButton = styled(Button)``
+const UploadButton = styled(Button)``
+const ClearButton = styled(Button)``
+
+
 
 
 
@@ -66,16 +68,11 @@ const UploadElement = styled.input`
   visibility: hidden;
 `
 
-const UploadButton = styled.button`
-  width: 20vh;
-  height: 5vh;
-  font-size: 2.5vh;
-  border-radius: 2vh;
-`
+
 
 const ToggleElement = styled.input`
-  width: 5vh;
-  height: 5vh;
+  width: 40px;
+  height: 40px;
 `
 
 const TogglePanal = styled.div`
