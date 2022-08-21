@@ -86,6 +86,7 @@ export default ({ mqttClient }) => {
 
   const [searchTimer, setSearchTimer] = useState(0)
   const [uploadTimer, setUploadTimer] = useState(0)
+  const [isAdminMode, setIsAdminMode] = useState(false)
 
   useEffect(() => {
     const timeout = searchTimer > 0 && setTimeout(() => setSearchTimer(searchTimer - 1), 1000);
@@ -124,12 +125,20 @@ export default ({ mqttClient }) => {
     })
   }, [])
 
+  function requestAdminMode() {
+      let password = prompt("Password?");
+
+      if (password.toLowerCase() === process.env.ADMIN_PASSWORD) {
+        setIsAdminMode(true);
+      }
+  }
+
 
   return(
     <>
     <Background />
     <ContentContainer>
-      <Title>Bubble Creator</Title>
+      <Title onClick={ () => !isAdminMode ? requestAdminMode() : null }>Bubble Creator</Title>
       <IntroText>Create bubbles from:</IntroText>
 
       <OptionHeadline>Topics in my head...</OptionHeadline>
@@ -158,22 +167,27 @@ export default ({ mqttClient }) => {
         accept="image/png, image/jpeg"
         type="file"
         id="file-input"/>
-      <OptionHeadline>Admin Panel</OptionHeadline>
-      <TogglePanal>
-        <div>
-        <ToggleElement
-          type="checkbox"
-          onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/toggleDiscoMode`, null)}/>
-          <Infotext>Disco</Infotext>
-        </div>
-          <div>
-          <ToggleElement
-          type="checkbox"
-          onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/toggleNSFWMode`, null)}/>
-          <Infotext>NSTFW</Infotext>
-        </div>
-      </TogglePanal>
+      { 
+        isAdminMode &&
+        <>
+        <OptionHeadline>Admin Panel</OptionHeadline>
+          <TogglePanal>
+            <div>
+            <ToggleElement
+              type="checkbox"
+              onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/toggleDiscoMode`, null)}/>
+              <Infotext>Disco</Infotext>
+            </div>
+            <div>
+            <ToggleElement
+            type="checkbox"
+            onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/toggleNSFWMode`, null)}/>
+            <Infotext>NSTFW</Infotext>
+            </div>
+          </TogglePanal>
         <ClearButton onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/clear`, null)}>Clear Bubbles</ClearButton>
+        </>
+      }
     </ContentContainer>
 
     </>
