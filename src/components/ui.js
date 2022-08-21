@@ -9,7 +9,8 @@ const Background = styled.div`
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background: white;
+  opacity: 0.08;
+  background: url(${bubblePattern});
 `
 const ContentContainer = styled.div`
   position: absolute;
