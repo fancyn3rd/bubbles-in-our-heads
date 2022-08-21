@@ -61,16 +61,9 @@ const InputButton = styled(Button)``
 const UploadButton = styled(Button)``
 const ClearButton = styled(Button)``
 
-
-
-
-
 const UploadElement = styled.input`
   visibility: hidden;
 `
-
-
-
 const ToggleElement = styled.input`
   width: 40px;
   height: 40px;
@@ -90,18 +83,17 @@ export default ({ mqttClient }) => {
 
   useEffect(() => {
     const timeout = searchTimer > 0 && setTimeout(() => setSearchTimer(searchTimer - 1), 1000);
-    return () => clearTimeout(timeout);
   }, [searchTimer]);
 
   useEffect(() => {
     const timeout = uploadTimer > 0 && setTimeout(() => setUploadTimer(uploadTimer - 1), 1000);
-    return () => clearTimeout(timeout);
   }, [uploadTimer]);
+
+  
+
 
 
   useEffect(() => {
-
-   
     uploadButtonRef.current.addEventListener("change", (event) => {
       const files = event.target.files
       const fileReader = new FileReader()
