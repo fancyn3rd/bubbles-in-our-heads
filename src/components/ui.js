@@ -129,14 +129,14 @@ export default ({ mqttClient }) => {
     <Background />
     <ContentContainer>
       <Title>Bubble Creator</Title>
-      <Subtext>Create bubbles from...</Subtext>
+      <IntroText>Create bubbles from:</IntroText>
 
-      <Description>Topics in my head...</Description>
-      <SearchInputField
+      <OptionHeadline>Topics in my head...</OptionHeadline>
+      <InputField
         disabled={ searchTimer > 0 }
         placeholder="topic1, topic2, ..."
         ref={ searchInputFieldRef }/>
-      <SearchInputButton
+      <InputButton
         disabled={ searchTimer > 0 }
         onClick={ () => {
           mqttClient.publish(`${ process.env.APP_TOPIC}/addTopics`,
@@ -144,9 +144,9 @@ export default ({ mqttClient }) => {
           setSearchTimer(INTERACTION_TIMEOUT)
         } }>
       {searchTimer > 0 ? searchTimer : "🦆 Find Images"}
-      </SearchInputButton>
-      <Description>Single Image</Description>
-      <Subtext>Max. {MAX_FILE_SIZE_IN_BYTES/1000000}MB</Subtext>
+      </InputButton>
+      <OptionHeadline>Image on my device...</OptionHeadline>
+      <Infotext>Max. {MAX_FILE_SIZE_IN_BYTES/1000000}MB</Infotext>
       <UploadButton
         disabled={ uploadTimer > 0 }
         onClick={ () => uploadButtonRef.current.click() }>
@@ -157,22 +157,22 @@ export default ({ mqttClient }) => {
         accept="image/png, image/jpeg"
         type="file"
         id="file-input"/>
-      <Description>Admin Panel</Description>
+      <OptionHeadline>Admin Panel</OptionHeadline>
       <TogglePanal>
         <div>
         <ToggleElement
           type="checkbox"
           onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/toggleDiscoMode`, null)}/>
-          <Subtext>Disco</Subtext>
+          <Infotext>Disco</Infotext>
         </div>
           <div>
           <ToggleElement
           type="checkbox"
           onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/toggleNSFWMode`, null)}/>
-          <Subtext>NSTFW</Subtext>
+          <Infotext>NSTFW</Infotext>
         </div>
       </TogglePanal>
-        <Button onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/clear`, null)}>Clear Bubbles</Button>
+        <ClearButton onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/clear`, null)}>Clear Bubbles</ClearButton>
     </ContentContainer>
 
     </>
