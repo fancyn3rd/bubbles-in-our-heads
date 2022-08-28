@@ -77,7 +77,7 @@ async function searchNewTextures(topic) {
         .then(results=> {
             for (let i = 0; i < MAX_IMAGES_PER_SEARCH; i++) {
                 const imageUrl = results[i].image
-                if (imageUrl.endsWith(".jpg") || imageUrl.endsWith(".png") || imageUrl.endsWith(".gif")) {
+                if (imageUrl.endsWith(".jpg") || imageUrl.endsWith(".png")) {
                     loadTexture(imageUrl)
                 }
             }
