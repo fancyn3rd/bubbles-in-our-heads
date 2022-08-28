@@ -5,7 +5,7 @@ import * as settings from "./settings"
 
 import { image_search } from "duckduckgo-images-api"
 
-const MAX_TEXTURES = 50
+const MAX_TEXTURES = 20
 const MAX_IMAGES_PER_SEARCH = 5
 
 const textures = []
@@ -14,8 +14,8 @@ let discoMode = false
 let NSTFWMode = false
 
 
-let maxImageWidth = 100
-let maxImageHeight = 100
+let maxImageWidth = 50
+let maxImageHeight = 50
 
 let textureCycleCounter = 0
 
@@ -29,7 +29,7 @@ export default () => {
             width: window.innerWidth,
             height: window.innerHeight,
             backgroundColor: 0x000000,
-            antialias: true
+            antialias: false
         })
 
         pixiAppRef.current.appendChild(pixiApp.view)
@@ -104,8 +104,8 @@ function createCircles(pixiApp, circleContainers) {
         const container = new PIXI.Container()
         const texture = textures[randomRange(0, textures.length - 1)]
        
-        maxImageWidth = randomRange(100,400)
-        maxImageHeight = randomRange(100,400)
+        maxImageWidth = randomRange(100,300)
+        maxImageHeight = randomRange(100,300)
 
         const sprite = new PIXI.Sprite(texture)
         sprite.blendMode = PIXI.BLEND_MODES[settings.blendModes[randomRange(0, settings.blendModes.length)]]
@@ -137,8 +137,8 @@ function updateCircle(sprite, container) {
     if (textures.length > 0) {
         textureCycleCounter < textures.length - 1 ? textureCycleCounter++ : textureCycleCounter = 0
         const texture = textures[textureCycleCounter]
-        maxImageWidth = randomRange(100,400)
-        maxImageHeight = randomRange(100,400)
+        maxImageWidth = randomRange(100,300)
+        maxImageHeight = randomRange(100,300)
         sprite.texture = texture
 
         container.removeChild(container.children[1])
