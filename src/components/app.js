@@ -2,20 +2,14 @@ import React from "react"
 import Canvas from "./canvas"
 import UserInterface from "./ui"
 
-export default ({ mqttClient, config }) => {
-  if (isMoblieDevice()) {
-    history.pushState({}, "user interface", "/ui");
-  }
-  
-  const route = window.location.pathname
-
+export default ({ mqttClient }) => {
   return(
     <>
-    { route === "/ui" &&
+    { isMoblieDevice() &&
         <UserInterface
           mqttClient={ mqttClient } />
     }
-    { route === "/" &&
+    { !isMoblieDevice() &&
         <Canvas />
     }
     </>
