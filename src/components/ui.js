@@ -171,14 +171,14 @@ export default ({ mqttClient }) => {
             <ToggleElement
               type="checkbox"
               ref={ discoToggleRef }
-              onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/toggleDiscoMode`, discoToggleRef.current.value)}/>
+              onClick={() => { mqttClient.publish(`${ process.env.APP_TOPIC}/toggleDiscoMode`, discoToggleRef.current.checked.toString())}}/>
               <Infotext>Disco</Infotext>
             </div>
             <div>
             <ToggleElement
             type="checkbox"
             ref={ nsfwToggleRef }
-            onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/toggleNSFWMode`, nsfwToggleRef.current.value)}/>
+            onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/toggleNSFWMode`, nsfwToggleRef.current.checked.toString())}/>
             <Infotext>NSTFW</Infotext>
             </div>
           </TogglePanal>
