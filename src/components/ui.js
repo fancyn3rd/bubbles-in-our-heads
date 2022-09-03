@@ -74,6 +74,9 @@ const TogglePanal = styled.div`
 `
 
 export default ({ mqttClient }) => {
+  const discoToggleRef = useRef()
+  const nsfwToggleRef = useRef()
+
   const searchInputFieldRef = useRef()
   const uploadButtonRef = useRef()
 
@@ -167,13 +170,15 @@ export default ({ mqttClient }) => {
             <div>
             <ToggleElement
               type="checkbox"
-              onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/toggleDiscoMode`, null)}/>
+              ref={ discoToggleRef }
+              onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/toggleDiscoMode`, discoToggleRef.current.value)}/>
               <Infotext>Disco</Infotext>
             </div>
             <div>
             <ToggleElement
             type="checkbox"
-            onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/toggleNSFWMode`, null)}/>
+            ref={ nsfwToggleRef }
+            onClick={() => mqttClient.publish(`${ process.env.APP_TOPIC}/toggleNSFWMode`, nsfwToggleRef.current.value)}/>
             <Infotext>NSTFW</Infotext>
             </div>
           </TogglePanal>

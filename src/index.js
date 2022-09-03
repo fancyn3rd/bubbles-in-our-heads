@@ -41,10 +41,10 @@ client.on("message", (topic, payload) => {
     parseImage(payload.toString())
   }
   if (topic.toString() == `${ process.env.APP_TOPIC}/toggleDiscoMode`) {
-    toggleDiscoMode()
+    toggleDiscoMode(payload.toString())
   }
   if (topic.toString() == `${ process.env.APP_TOPIC}/toggleNSFWMode`) {
-    toggleNSFWMode()
+    toggleNSFWMode(payload.toString())
   }
   if (topic.toString() == `${ process.env.APP_TOPIC}/clear`) {
     if (window.location.pathname === "/") {

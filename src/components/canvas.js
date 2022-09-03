@@ -220,13 +220,15 @@ export function parseImage(ImageData) {
     loadTexture(ImageData)
 }
 
-export function toggleNSFWMode() {
-    NSTFWMode = !NSTFWMode
-    console.log("NSFW mode: ", NSTFWMode)
+export function toggleNSFWMode(payload) {
+    const newState = payload === "true" ? true : false
+    NSTFWMode = newState
+    console.log("Disco mode: ", NSTFWMode)
 }
 
-export function toggleDiscoMode() {
-    discoMode = !discoMode
-    console.log("NSFW mode: ", discoMode)
+export function toggleDiscoMode(payload) {
+    const newState = payload === "true" ? true : false
+    discoMode = newState
+    console.log("NSFW mode: ", newState)
 
 }
