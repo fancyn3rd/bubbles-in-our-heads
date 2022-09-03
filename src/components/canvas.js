@@ -223,12 +223,12 @@ export function parseImage(ImageData) {
 export function toggleNSFWMode(payload) {
     const newState = payload === "true" ? true : false
     NSTFWMode = newState
-    console.log("Disco mode: ", NSTFWMode)
+    console.log("NSFW mode: ", NSTFWMode)
 }
 
 export function toggleDiscoMode(payload) {
     const newState = payload === "true" ? true : false
     discoMode = newState
-    console.log("NSFW mode: ", newState)
+    console.log("Disco mode: ", discoMode)
 
 }
