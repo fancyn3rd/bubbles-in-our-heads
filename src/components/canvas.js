@@ -102,6 +102,7 @@ function loadTexture(url) {
     })
     
     texture.baseTexture.on('loaded', () => {
+        console.log("Loaded:", url)
         textures[texturePositionCounter] = texture
 
         texturePositionCounter = texturePositionCounter < MAX_TEXTURES ?
