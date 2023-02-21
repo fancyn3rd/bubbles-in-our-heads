@@ -57,7 +57,8 @@ export default () => {
 }
 
 function main(pixiApp, circleContainers, textureCounter) {
-    createTextures()
+    //createTextures()
+    createTexturesLocal()
     createCircles(pixiApp, circleContainers, textureCounter)   
 }
 
@@ -69,6 +70,13 @@ async function createTextures() {
         for (const topic of topics) {
              await searchNewTextures(topic) 
         }
+    }
+}
+
+async function createTexturesLocal() {
+
+    for (let i=1; i<10; i++) {
+        loadTexture(`../../assets/images/${i}.png`)
     }
 }
 
