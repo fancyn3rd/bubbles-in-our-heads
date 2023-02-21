@@ -14,9 +14,11 @@ let discoMode = false
 let NSTFWMode = false
 
 
-let maxImageWidth = 50
-let maxImageHeight = 50
+const maxImageWidthRange = [100, 300]
+const maxImageHeightRange = [100, 300]
 
+let maxImageWidth = 0
+let maxImageHeight = 0
 let textureCycleCounter = 0
 
 export default () => {
@@ -104,8 +106,8 @@ function createCircles(pixiApp, circleContainers) {
         const container = new PIXI.Container()
         const texture = textures[randomRange(0, textures.length - 1)]
        
-        maxImageWidth = randomRange(100,300)
-        maxImageHeight = randomRange(100,300)
+        maxImageWidth = randomRange(maxImageWidthRange[0],maxImageWidthRange[1])
+        maxImageHeight = randomRange(maxImageHeightRange[0],maxImageHeightRange[1])
 
         const sprite = new PIXI.Sprite(texture)
         sprite.blendMode = PIXI.BLEND_MODES[settings.blendModes[randomRange(0, settings.blendModes.length)]]
@@ -137,8 +139,8 @@ function updateCircle(sprite, container) {
     if (textures.length > 0) {
         textureCycleCounter < textures.length - 1 ? textureCycleCounter++ : textureCycleCounter = 0
         const texture = textures[textureCycleCounter]
-        maxImageWidth = randomRange(100,300)
-        maxImageHeight = randomRange(100,300)
+        maxImageWidth = randomRange(maxImageWidthRange[0],maxImageWidthRange[1])
+        maxImageHeight = randomRange(maxImageHeightRange[0],maxImageHeightRange[1])
         sprite.texture = texture
 
         container.removeChild(container.children[1])
