@@ -74,9 +74,10 @@ async function createTextures() {
 }
 
 async function createTexturesLocal() {
+    const files = require.context("../../assets/images/", false, /\.(gif|png|jpe?g)$/i).keys()
 
-    for (let i=1; i<10; i++) {
-        loadTexture(`../../assets/images/${i}.png`)
+    for (const file of files) {
+        loadTexture(`../../assets/images/${file}`)
     }
 }
 
