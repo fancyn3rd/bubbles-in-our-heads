@@ -57,8 +57,15 @@ export default () => {
 }
 
 function main(pixiApp, circleContainers, textureCounter) {
-    //createTextures()
-    createTexturesLocal()
+    const urlParams = new URLSearchParams(window.location.search)
+    const isLocalMode = urlParams.has("local")
+
+    if (isLocalMode) {
+        createTexturesLocal()
+    } else {
+        createTextures()
+    }
+
     createCircles(pixiApp, circleContainers, textureCounter)   
 }
 
@@ -74,6 +81,8 @@ async function createTextures() {
 }
 
 async function createTexturesLocal() {
+
+    // require.context is a special feature of webpack
     const files = require.context("../../assets/images/", false, /\.(gif|png|jpe?g)$/i).keys()
 
     for (const file of files) {
