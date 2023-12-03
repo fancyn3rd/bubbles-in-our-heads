@@ -142,7 +142,6 @@ export default ({ mqttClient }) => {
           {searchTimer > 0 ? searchTimer : "🦆 Find Images"}
         </InputButton>
         <OptionHeadline>Image on my device...</OptionHeadline>
-        <Infotext>Max. {MAX_FILE_SIZE_IN_BYTES / 1000000}MB</Infotext>
         <UploadButton
           disabled={uploadTimer > 0}
           onClick={() => uploadButtonRef.current.click()}
