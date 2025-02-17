@@ -36,7 +36,10 @@ open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args
 #### Windows:
 
 Create a new shortcut with target as
+
+```
 "[PATH_TO_CHROME]\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
+```
 
 #### Linux:
 
