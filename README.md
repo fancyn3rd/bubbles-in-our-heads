@@ -1,3 +1,5 @@
+![](cover.png)
+
 # Bubbles in our heads
 
 Small pixi.js app that shows raising bubbles and a user interface for mobile devices to control the bubbles content.
