@@ -3,9 +3,7 @@
 # Bubbles in our heads
 
 Small pixi.js app that shows raising bubbles and a user interface for mobile devices to control the bubbles content.
-
-The user interface allows users to let the serach engine _DuckDuckGo_ find images for the bubbles are upload their own.
-
+The user interface allows users to let the serach engine _DuckDuckGo_ find images for the bubbles or upload their own.
 Data is transfered via an mqtt server.
 
 ### Development / Local Usage
